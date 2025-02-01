@@ -52,22 +52,30 @@ git clone git@github.com:y4edd/sonic-journey.git
 cd sonic-journey
 yarn install
 ```
+3. postgresのサーバー上で、「sonic-journey」などの名前でDBを作成します。
 
-3. DB をマイグレーションします。
+4. .envを作成し、3.で作ったDBの名前に合わせてDATABASE_URLのURLとJWT_SECTRET＿KEYの秘密鍵を作成します。
+
+5. DB上でテーブルを作成します。
+```bash
+yarn prisma migrate dev --name init
+```
+
+6. DB をマイグレーションします。
 
 ```bash
 yarn prisma db push
 ```
 
-4. DB に必要な情報をインポートします。Seed ファイル(/prisma/sql/picksInsert.sql, /prisma/sql/pickSongInsert.sql)を順に実行します。
+7. DB に必要な情報をインポートします。Seed ファイル(/prisma/sql/seed.sql,/prisma/sql/picksInsert.sql, /prisma/sql/pickSong.sql)を順に実行します。
 
-5. 開発サーバーを起動します。
+8. 開発サーバーを起動します。
 
 ```bash
 yarn dev
 ```
 
-6. ブラウザで`http://localhost:3000`にアクセスします。
+9. ブラウザで`http://localhost:3000`にアクセスします。
 
 ## 使用方法
 
